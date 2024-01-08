@@ -19,4 +19,8 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('main/', main.site.urls),
+    path('games/', games.site.urls),
+    path('contact/', contact.site.urls),
+    path('signin/', signin.site.urls)
 ]
