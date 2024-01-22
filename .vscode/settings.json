@@ -1,3 +1,4 @@
 {
-    "liveServer.settings.port": 5659
+    "liveServer.settings.port": 5659,
+    "python.analysis.typeCheckingMode": "basic"
 }

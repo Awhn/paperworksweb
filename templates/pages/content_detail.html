@@ -4,4 +4,27 @@
 <div>
     {{ content_list.content }}
 </div>
+<section class="mb-5">
+    <div class="card bg-light">
+        <div class="card-body">
+            <form method="post" class="mb-4" action="{% url 'comment_create' content_list.id %}">
+            {% csrf_token %}
+            <label for="Rating" class="form-label">Rating(1 to 5)</label>
+            <input type="range" class="form-range form-control" min="1" max="5" name = "rating" id="rating" placeholder="5">
+            <textarea id="content" name="content" class="form-control" rows="3" placeholder="내용을 입력해주세요."></textarea>
+            <button type="submit" class="btn btn-primary">submit</button>
+            </form>
+            {% for comment in content_list.comments_set.all %}
+            <div class="d-flex">
+            <div class="ms-3">
+            <div class="fw-bold">{{ comment.author.username }} &nbsp&nbsp
+            {{ comment.create_date }} &nbsp&nbsp Rating : {{ comment.rating }} </div>
+            {{ comment.content }} 
+            </div>
+            </div>
+            <br/>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock %}
