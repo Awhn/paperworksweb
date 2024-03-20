@@ -3,19 +3,16 @@
 {% if form.errors %}
 <p>아이디 또는 비밀번호가 틀립니다. 다시 시도해주세요.</p>
 {% endif %}
-<form method="post" action="{% url 'accounts:login' %}" class = "align-items-start" >
+<form method="post" action="{% url 'accounts:login' %}">
 {% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
-<input type="submit" value="login">
-</form>
-<a href="{% url 'accounts:signup' %}">signup</a>
+<div class="login-container">
+    <H1 style = "margin-bottom: 5vmax; margin-top: 5vmax;">Login</H1>
+    <form action="{% url 'accounts:login' %}" method="post" class="align-items-start" style="margin-top: 20vmax;">
+        {% csrf_token %}
+        <input type="text" placeholder="Enter your ID" name="username" value="{{ form.username.value }}">
+        <input type="password" placeholder="Enter your password" name="password" value="{{ form.password.value }}">
+        <button type="submit">Login</button>
+    </form>
+    <a href="{% url 'accounts:signup' %}">Sign-up?</a>
+</div>  
 {% endblock %}
